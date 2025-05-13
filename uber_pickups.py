@@ -47,6 +47,12 @@ hour_to_filter = st.slider('hour', 0, 23, 17)
 filtered_data = data[data[DATE_COLUMN].dt.hour == hour_to_filter]
 
 
+st.subheader('Map of all pickups at %s:00' % hour_to_filter)
+st.map(filtered_data)
+
+
+
+
 
 
 
