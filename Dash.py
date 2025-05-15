@@ -1,11 +1,38 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
+import requests
+from io import StringIO
+import streamlit as st
 
-# Load datasets
-ratings = pd.read_csv("processed_ratings.csv")
-top_movies = pd.read_csv("top_movies.csv")
-user_freq = pd.read_csv("user_frequency.csv")
+def load_original_data():
+    url = 'https://raw.githubusercontent.com/Agnieszka-Kamieniksba23169/Test_Uber_App/refs/heads/main/top_movies.csv'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return pd.read_csv(StringIO(response.text))
+    else:
+        st.error("Failed to load data from GitHub.")
+        return None
+
+def load_original_data():
+    url = 'https://raw.githubusercontent.com/Agnieszka-Kamieniksba23169/Test_Uber_App/refs/heads/main/user_frequency.csv'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return pd.read_csv(StringIO(response.text))
+    else:
+        st.error("Failed to load data from GitHub.")
+        return None
+
+
+def load_original_data():
+    url = 'https://raw.githubusercontent.com/Agnieszka-Kamieniksba23169/Test_Uber_App/refs/heads/main/processed_ratings.csv'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return pd.read_csv(StringIO(response.text))
+    else:
+        st.error("Failed to load data from GitHub.")
+        return None
+
+
 
 # Page Config
 st.set_page_config(page_title="Youth Movie Rating Dashboard", layout="wide")
