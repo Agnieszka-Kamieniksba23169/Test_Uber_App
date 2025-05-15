@@ -42,16 +42,16 @@ st.markdown("Interactive dashboard to explore user behavior and ML potential fro
 
 # Summary Cards
 col1, col2, col3 = st.columns(3)
-col1.metric("Total Ratings", f"{len(ratings):,}")
-col2.metric("Unique Users", f"{ratings['userId'].nunique():,}")
-col3.metric("Movies Rated", f"{ratings['movieId'].nunique():,}")
+col1.metric("Total Ratings", f"{len(rating):,}")
+col2.metric("Unique Users", f"{rating['userId'].nunique():,}")
+col3.metric("Movies Rated", f"{rating['movieId'].nunique():,}")
 
 st.markdown("---")
 
 # Top Movies by Rating Count
 st.subheader("Top 10 Most Rated Movies")
 fig_top_movies = px.bar(top_movies, x='movieId', y='count',
-                        hover_data=['mean'], labels={'count': 'Number of Ratings'},
+                        hover_data=['mean'], labels={'count': 'num_ratings'},
                         color='mean', title="Top Rated Movies by Number of Ratings")
 st.plotly_chart(fig_top_movies, use_container_width=True)
 
