@@ -10,14 +10,14 @@ user_freq = pd.read_csv("user_frequency.csv")
 # Page Config
 st.set_page_config(page_title="Youth Movie Rating Dashboard", layout="wide")
 
-st.title("🎮 Movie Ratings Dashboard for Young Adults (18–35)")
+st.title("Movie Ratings Dashboard for Young Adults (18–35)")
 st.markdown("Interactive dashboard to explore user behavior and ML potential from movie ratings.")
 
 # Summary Cards
 col1, col2, col3 = st.columns(3)
-col1.metric("🎟️ Total Ratings", f"{len(ratings):,}")
-col2.metric("👤 Unique Users", f"{ratings['userId'].nunique():,}")
-col3.metric("🎞️ Movies Rated", f"{ratings['movieId'].nunique():,}")
+col1.metric("Total Ratings", f"{len(ratings):,}")
+col2.metric("Unique Users", f"{ratings['userId'].nunique():,}")
+col3.metric("Movies Rated", f"{ratings['movieId'].nunique():,}")
 
 st.markdown("---")
 
@@ -36,13 +36,13 @@ fig_activity = px.line(activity, x='hour', y='rating', markers=True,
 st.plotly_chart(fig_activity, use_container_width=True)
 
 # User Rating Frequency
-st.subheader("👤 User Rating Frequency")
+st.subheader("User Rating Frequency")
 fig_users = px.histogram(user_freq, x='num_ratings', nbins=50, title="User Rating Distribution",
                          labels={'num_ratings': 'Ratings per User'})
 st.plotly_chart(fig_users, use_container_width=True)
 
 # Heatmap of Ratings (Machine Learning Suitability)
-st.subheader("🧠 Ratings Heatmap (ML Suitability)")
+st.subheader("Ratings Heatmap (ML Suitability)")
 
 # Sample data for heatmap
 sample = ratings.sample(1000, random_state=42)
@@ -54,4 +54,4 @@ st.plotly_chart(fig_heatmap, use_container_width=True)
 
 # Footer
 st.markdown("---")
-st.markdown("👩‍💻 Designed for young adults (18–35) with interactive exploration, minimal clutter, and machine learning relevance.")
+st.markdown("Designed for young adults (18–35) with interactive exploration, minimal clutter, and machine learning relevance.")
