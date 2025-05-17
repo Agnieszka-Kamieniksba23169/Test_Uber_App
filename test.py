@@ -7,6 +7,11 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
+arr = np.random.normal(1, 1, size=100)
+plt.hist(arr, bins=20)
+st.pyplot()
+
+
 # Set visual style
 sns.set(style="whitegrid")
 
