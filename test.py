@@ -1,23 +1,27 @@
-source /home/adminuser/venv/bin/activate
-pip install seaborn matplotlib streamlit
-streamlit run /mount/src/test_uber_app/test.py
+
 
 import streamlit as st
 import pandas as pd
 import numpy as np
-import requests
+import requirements
 from io import StringIO
-import matplotlib.pyplot as plt
-import seaborn as sns
 
 
+
+
+@st.cache_data
+def load_movie_df():
+    url = 'https://raw.githubusercontent.com/Agnieszka-Kamieniksba23169/Test_Uber_App/refs/heads/main/movie_df.csv'
+    response = requests.get(url)
+    if response.status_code == 200:
+        return pd.read_csv(StringIO(response.text))
+    else:
+        st.error("Failed to load movies data.")
+        return None
 
 
 # Set visual style
 sns.set(style="whitegrid")
-
-# Load the dataset 
-movie_df = pd.read_csv("movie_df.csv")
 
 # Filter data for age group 18-35 based on assumptions (e.g., all users are in this group or user data not available)
 st.title("🎬 Movie Insight Dashboard for Young Adults (18-35)")
