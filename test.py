@@ -18,8 +18,6 @@ def load_movie_df():
         return None
 
 
-# Set visual style
-sns.set(style="whitegrid")
 
 # Filter data for age group 18-35 based on assumptions (e.g., all users are in this group or user data not available)
 st.title("🎬 Movie Insight Dashboard for Young Adults (18-35)")
