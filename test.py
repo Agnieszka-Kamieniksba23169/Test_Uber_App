@@ -10,7 +10,7 @@ import seaborn as sns
 # Set visual style
 sns.set(style="whitegrid")
 
-# Load the dataset (assumes the file is in the same directory)
+# Load the dataset 
 movie_df = pd.read_csv("movie_df.csv")
 
 # Filter data for age group 18-35 based on assumptions (e.g., all users are in this group or user data not available)
