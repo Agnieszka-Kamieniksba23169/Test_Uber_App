@@ -1,11 +1,10 @@
-
-
 import streamlit as st
 import pandas as pd
 import numpy as np
-
-
-
+import requests
+from io import StringIO
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 @st.cache_data
 def load_movie_df():
@@ -16,6 +15,7 @@ def load_movie_df():
     else:
         st.error("Failed to load movies data.")
         return None
+
 
 # Call the data loader and assign to movie_df
 movie_df = load_movie_df()
