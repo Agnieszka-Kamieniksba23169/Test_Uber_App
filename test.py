@@ -1,3 +1,7 @@
+source /home/adminuser/venv/bin/activate
+pip install seaborn matplotlib streamlit
+streamlit run /mount/src/test_uber_app/test.py
+
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -7,9 +11,6 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 
-arr = np.random.normal(1, 1, size=100)
-plt.hist(arr, bins=20)
-st.pyplot()
 
 
 # Set visual style
