@@ -72,7 +72,7 @@ st.pyplot(fig2)
 
 # Genre popularity
 st.subheader("🎭 Genre Popularity")
-genre_counts = filtered_df['genres'].value_counts().reset_index()
+genre_counts = filtered_df['genres'].value_counts().head(10).reset_index()
 genre_counts.columns = ['genre', 'count']
 fig3, ax3 = plt.subplots()
 sns.barplot(data=genre_counts, x='genre', y='count', ax=ax3)
