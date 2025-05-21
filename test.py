@@ -19,9 +19,7 @@ def load_movie_df():
 # Load data
 movie_df = load_movie_df()
 
-# Basic checks
 if movie_df is not None:
-
     st.title("🎬 Movie Insight Dashboard for Young Adults (18-35)")
     st.markdown("Explore movie ratings and patterns through engaging visuals")
 
@@ -41,12 +39,13 @@ if movie_df is not None:
         0.0, 5.0, 3.0
     )
     
-    # New userId filter
-    user_ids = movie_df['userId'].unique()
-    user_filter = st.sidebar.multiselect(
-        "Filter by User ID",
-        options=user_ids,
-        default=user_ids
+    # User ID slider filter
+    user_min = int(movie_df['userId'].min())
+    user_max = int(movie_df['userId'].max())
+    user_range = st.sidebar.slider(
+        "Select User ID Range",
+        user_min, user_max,
+        (user_min, user_max)
     )
 
     # Apply filters
@@ -61,8 +60,10 @@ if movie_df is not None:
     ]
     filtered_df = filtered_df[filtered_df['rating'] >= rating_threshold]
 
-    if user_filter:
-        filtered_df = filtered_df[filtered_df['userId'].isin(user_filter)]
+    filtered_df = filtered_df[
+        (filtered_df['userId'] >= user_range[0]) & 
+        (filtered_df['userId'] <= user_range[1])
+    ]
 
     # Display filtered data summary
     st.subheader("Filtered Data Overview")
